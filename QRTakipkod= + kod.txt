@@ -1,0 +1,1 @@
+"/QR/Takip?kod=" + kod

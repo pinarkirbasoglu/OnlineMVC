@@ -1,0 +1,25 @@
+YÜKLENEN RESİMLERİN DOSYA ADLARINI FARKLI GUİD OLARAK TANIMLAYARAK ALMAK
+protected void btUpload_Click(object sender, EventArgs e)
+{
+    string photoName = string.Empty;  
+    string photoExtension = string.Empty;
+ 
+    if (FlUpload.HasFile) 
+    {
+        photoExtension = Path.GetExtension(FlUpload.PostedFile.FileName);
+ 
+        if (photoExtension.ToLower() == ".jpg" || photoExtension.ToLower() == ".png")
+        { 
+            photoName = Guid.NewGuid() + photoExtension;
+            FlUpload.SaveAs(Server.MapPath("~/uploads/photo/" + photoName));
+            ltInfo.Text = "Resim yükleme işlemi başarılı.";
+        }
+        else
+        {
+            ltInfo.Text = "Resim uzantısı eşleşmiyor...!";
+        }
+    }
+    else
+    {
+        ltInfo.Text = "Resim yüklemediniz...!";
+    }

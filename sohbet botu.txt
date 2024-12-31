@@ -1,0 +1,9 @@
+sohbet botu
+microsoft
+https://github.com/microsoft/botframework-sdk
+botkiy:
+https://github.com/howdyai/botkit
+rasa:
+https://rasa.com/
+botpress:
+https://botpress.com/

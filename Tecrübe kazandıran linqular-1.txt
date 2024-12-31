@@ -1,0 +1,110 @@
+Tecrübe kazandıran linqular:
+**Bir şeyin toplam sayısını demek kaç tane ondan var demek yani o şeyi SAYACAĞIZ ***sayma linq fonk: Count()***
+-----ÖRNEK
+ >Toplam kaç adet ürün var-->var deger1=c.Uruns.Count().Tostrig();
+	>>AÇIKLAMASI:
+c= vt bağlantı nesnesi , Uruns =verileri sayılacak olan tablonun ismi ,conut()= vt de uruns tbl de ki verileri say , tostring()=sayı olark değil metin olark ver.Her bir ürün ürün tablosunda tutuluyor bir ürün nesnesi olarak her yani uruns tl de ki her kayıt bir ürün o kayıtların saysısı bize lazım. O yüzden kayıtları saydırdık.
+>Kaç tane marka var-->var deger6=(from x in c.Uruns select x.Marka).Distinct().Count().ToString();
+	>>AÇIKLAMASI:
+from x in uruns :uruns tbldeki her bir gelene x de select x.Marka seçili olanın marka özelliğini al Distinct() tekrarsız ise al Count() aldıkalrını say
+>Stok sayısı 20 den az olanaların sayısı--> var deger7=c.Uruns.Count(x => x.Stok < 20).ToString();
+	>>AÇIKLAMASI:
+Her bir kaydı al ve bak stok sayısı 20 den az mı diye azsa sayıya dahil et.şartı direkt count linqunun içinde verebilirz.
+>Bügun toplamda kaç tane ürün satılmış--> 
+datetime bugun=datetime.today;
+var deger5=c.satisharekets.where(x=>x.Tarih==bugun).count();
+>cariler tbl de kaç farklı şehir var onu saydıracağız:
+ViewBag.d4=(from x in c.Carilers select x.CariSehir).Distinct().Count().ToString();
+	>>AÇIKLAMASI: 
+şeklinde yaptık c.cariler.count(x=>x.carisehir).distinnct().tostring(); olmuyor cariler tbl de her bir kayde x de x lerin carisehir alanın seç  seçtiğin bu alanı tekrarsız al tekrarsızlerı say.
+
+
+**Toplam stok demek Uruns tbl deki her bir kayıdın yani ürünün tek tek stoklarının toplayıp gelen sonuç demek ***toplma linq fonk: Sum()***
+-----ÖRNEK
+>Toplam stok sayısı:var deger2=c.Uruns.Sum(x=>x.stok).ToString();
+	>>AÇIKLAMASI:
+lambda olan x her bir kaydı ifade eder Sum(x=>x.stok):her bir kaydı al aldığın kaydın stok değerini al toplma önce 0 dan başlar toplamya
+0+ilk kaydın stok değeri+ikinci kaydın stok değeri+...+n.kaydın stok değeri olarak toplar bu sonucu deger2 değişkenşne string olark at.
+
+>Bugün satışlar ile kasay giren toplam para-->
+datetime bugun=datetime.today;
+var deger6=c.satishareket.where(x=>x.tarih==bugun).sum(y=>y.toplamtutar);
+	>>AÇIKLAMA:
+Tarihi bugün olan kayıtları al ve her bir aldığın kaydın toplamtutarını topla onun sonucnu ver.
+
+
+**MAX MİN olanı alma mantıken nasıl yaparız:Max için,saysınına göre artandan azalana sırala sonra da ilk değeri al; min için, azalandan artana sırala  ilk değeri al **Sıralam orderby ile yapılır descending artandan azalana , ascending azalnadan artana**
+-----ÖRNEK
+>En pahalı ürün-->var deger4=(from x in Uruns orderby x.SatisFiyat descending select x.urunad).firstordefault();
+	>>AÇIKLAMASI:
+her bir kaydı satisfiyata göre artdan sırala, seçili olanın yani her bir kaydın urunadı özelliğini al, firstordefault() bulduğun ilk değeri dön yani satisfitata en pahalı olan ilk sırada onun adını dön dedik.
+>En ucuz ürün-->var deger4=(from x in Uruns orderby x.SatisFiyat ascending select x.urunad).firstordefault();
+
+
+**EN çok ürünü bulunan marka:marka urun tbl de markalara göre alırız sayarız ve bu sayıya göre artdan azalana göre sıralatıp ilk sırayı alırız.Her bir markandan kaçt tane ürünü var ona bakıyoruz HER BİR=Group by dır markayı group bylıcaz -->
+var deger12 =c.Uruns.GroupBy(x=>x.Marka).OrderByDescending(x=>x.Count()).Select(x=>x.Key).FirstOrDefault();
+	>>AÇIKLAMASI:
+Select(x=>x.Key) demezsen grpouplandırım saydırdığın değere ulaşamazssın .Select(x=>x.Key) diyerek grouplandıırak saaydırılıp sıralanmış değere değere ulaştık.
+
+**En çok satan ürünün adı:
+1-satisharkete gidecek her bir urunidden kaç tane satış yapılmış onu bulup bu ürünidleri artandan azalana sıralıyıp ilk sırada olan ürünidi alacak
+2-Aldığı ürünid i gidecek uruns tbl de ürünide arayacak sonra o gelen değerin adını alacak
+ 
+var deger7=c.uruns.where(urunid==(c.satisHareket.groupby(x=>x.ürünid).orderbydescending(y=>y.count()).select(k=>k.key).firstordefault())).select(m=>m.urunad).firstordefault();
+
+**Login yapılmış olan kişinin satışalrını gösterme:
+	var mail = (string)Session["CariMail"];//biz identity olarka carinin CariMail alanını almıştık
+        var id=c.Carilers.Where(x=>x.CariMail==mail.ToString()).Select(y=>y.Cariid).FirstOrDefault();
+/*
+	c.Carilers.Where(x=>x.CariMail==mail.ToString()) --> cariler tbl de CariMaili bizimşuanda log olan maile eşit olan CariMail değerini string olark al
+	.Select(y=>y.Cariid).FirstOrDefault() --> aldığın mail değerinin bulunduğu ilk kaydın cariid değerini al bu cariid değerini id değişkenine ata.	
+*/
+        var siparis = c.SatisHarekets.Where(x => x.Cariid == id).ToList();//sonra bu id değişkenin satış geçimisini satisHarekts tblden listele çünkü satışalar satisharekts de CariMaile ulaşma işlemi ise cariler tblden yapılır çünkü biz loglamada cariler tbl de bakıyoruz ve cariler tbl üzerinden carimaili identity olark belirliyoroz loglamayı cariler tblden baktığımız için
+
+
+**bugunkü kasa ciro bulma:
+	                var deger16=c.SatisHarekets.Where(x=>x.Tarih==bugun).Sum(y=>(decimal?)y.ToplamTutar);
+		/*bugünkü kasa değeri boş olduğunda hata veriyor boş gelebilir diye bilirtiyoruz ki hata gelemsin try-cath benim bulduğum 		farklı bir çözüm yoluydu bu hocanın çözümü*/
+
+
+**Seçilen kategorideki ürünleri getirme:
+	-->Bunun için cont. da yazacğımız sorguda join ile ilişkiyi belirmemiz lazım sonrada şart olar istenen kategori idsine eşit olanları getirtmemiz lazım.
+	----->>>var urunler=(from x in c.uruns join y in c.kategories on x.kategori.kategoriid equals y.kategoriID where x.kategoriid==p
+select new{
+	Text=x.UrunAd,
+	Value=x.Urunid
+}).ToList();
+
+
+
+
+
+
+
+
+
+**Görsel anlamda çözümle ve türkçeleştirme 10 destek oyu
+	Hasan · Ders 70 · 2 yıl önce
+	Türkçeleştrime için ufuk adlı kişinin yorumundan faydanalandım gerekli düzeltmeler vs için de
+	"https://datatables.net/examples/styling/bootstrap4" adresinden yararlandım
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+	<link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+ 
+	<script>
+    		$('#tbl1').dataTable({
+        	"language" : {
+ 
+            	"url": "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
+ 
+        	}
+    	});
+	</script>
+
+
+
+
+

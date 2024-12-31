@@ -1,0 +1,47 @@
+Popup diyolog penceresi yapma:
+Faturals view da index sayfasında
+
+Resim ekleme:
+Personel cont personelguncelle ve ekle actionda
+
+alert eklem:
+kategoriekleme viewında kategori eklenince kategori eklendi diyor.
+
+sweet alert eklem:
+yenifaturakalem view da
+
+silmek için eminmisin sweet alerti ekleme:
+kategori index view da
+
+personelde resmi değiştirmeden güncelleme yapamaızı sağlanyan kod 
+personel controllerda personelguncelle actionda
+
+js bir inputta değişiklil olduğunda toplama/çıkarma/çarpma/bölme işelmine göre sonucu revize etme
+vsc üzerinde yazılan  JSdenemeleri klasörü içinde
+
+Js otomatik kodlar ile toplam tutar hesaplatma:
+Urunler controllerında satisyap actionın viewında 
+
+Arama çubuğu:
+Uurn cont.postlu index actionda Kargo cont. postlu index aciton yapıldı
+
+Random rastgele kargo takip kodu üretildi:
+Kargo cont. KargoEkle hhtpGetli actionda
+
+QR kod oluşturma: 
+QR Controllrında postlu actionda ve daha düzgün qr kod oluşturma: http://www.aspmvcnet.com/tr/m/asp-net-mvc/mvc-de-qr-kodu-olusturmak.html
+
+
+View üzerinden grf oluşutma: Grafik cont index action da,controller üzerinden grf oluşturma index2 actionda cont üzerinden grf oluşturulusa veri tabanından veriler kullanılaablilir.
+
+Ajax ile dropdowndan kategoriye göre getirme:Kategori cont. da deneme action ve urungetir actionda
+
+
+Yetkilendirme roller klasöünrde adminroleprovider sınıfnfd ve departman cont. da departmanekle de var
+
+
+whaptsap sohbetbotu eklme js
+https://forum.shiftdelete.net/konular/javascript-whatsapp-sohbet-ekleme.645331/
+
+whatsap eklentisi:dinamihfaturalar view da
+

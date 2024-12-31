@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="txt1" onkeyup="sum()">
+    <input type="text" id="txt2" onkeyup="sum()">
+    <input type="text" id="txt3">
+    <script>
+            function sum(){
+                var s1=document.getElementById('txt1').value
+                var s2=document.getElementById('txt2').value
+                var sonuc=parseInt(s1)*parseInt(s2)
+                if (!isNaN(sonuc)) {
+                    document.getElementById('txt3').value = sonuc
+                }
+        }
+    </script>
+</body>
+</html>

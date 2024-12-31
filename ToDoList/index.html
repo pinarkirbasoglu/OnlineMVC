@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="stil.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <h1 class="justify-content-center" style="font-family: 'Courier New', Courier, monospace;">TO DO LİST</h1>
+              <div class="card">
+                <div class="card-body p-5">
+      
+                  <form class="d-flex justify-content-center align-items-center mb-4">
+                    <div class="form-outline flex-fill ">
+                      <input type="text" id="form2" class="form-control" />
+                      <!--<label class="form-label" for="form2">Yeni görev...</label>-->
+                    </div>
+                    <button type="submit" class="btn btn-info ms-2 mt-0">Yeni Görev</button>
+                  </form>
+      
+                  <!-- Tabs navs -->
+                  <ul class="nav nav-tabs mb-4 pb-2" id="ex1" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="/Yapilacaklar/index/" role="tab"
+                        aria-controls="ex1-tabs-1" aria-selected="true">Tümü</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="ex1-tab-2" data-mdb-toggle="tab" href="/Yapilacaklar/bitmemis/" role="tab"
+                        aria-controls="ex1-tabs-2" aria-selected="false">Yapılmayanlar</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="ex1-tab-3" data-mdb-toggle="tab" href="/Yapilacaklar/bitmis/" role="tab"
+                        aria-controls="ex1-tabs-3" aria-selected="false">Yapılanlar</a>
+                    </li>
+                  </ul>
+                  <!-- Tabs navs -->
+      
+                  <!-- Tabs content -->
+                  <div class="tab-content" id="ex1-content">
+                    <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel"
+                      aria-labelledby="ex1-tab-1">
+                      <ul class="list-group mb-0">
+                        <!-- her bir liste elemanı
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." checked />
+                          <s>Burası neresi craslı olan</s>
+                        </li>-->
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." checked />
+                          <s>Dapibus ac facilisis in</s>
+                        </li>
+                      </ul>
+                    </div>
+                  <!--  <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                      <ul class="list-group mb-0">
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
+                           peki bu ne Morbi leo risus
+                        </li>
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
+                          peki bu ne Porta ac consectetur ac
+                        </li>
+                        <li class="list-group-item d-flex align-items-center border-0 mb-0 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." />
+                          peki bu ne Vestibulum at eros
+                        </li>
+                      </ul>
+                    </div> 2. bir tablo olursa-->
+
+                    <!--3.bir tablo olursa
+                    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                      <ul class="list-group mb-0">
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." checked />
+                          <s>Cras justo odio</s>
+                        </li>
+                        <li class="list-group-item d-flex align-items-center border-0 mb-2 rounded"
+                          style="background-color: #f4f6f7;">
+                          <input class="form-check-input me-2" type="checkbox" value="" aria-label="..." checked />
+                          <s>Dapibus ac facilisis in</s>
+                        </li>
+                      </ul>
+                    </div>-->
+                  </div>
+                  <!-- Tabs content -->
+      
+                </div>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

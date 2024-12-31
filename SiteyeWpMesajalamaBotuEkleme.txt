@@ -1,0 +1,57 @@
+https://forum.shiftdelete.net/konular/javascript-whatsapp-sohbet-ekleme.645331/
+
+<script src="~/vendor/main.js"></script>
+
+<script type="text/javascript">
+
+(function () {
+
+var options = {
+
+whatsapp: "+90505XXXXXXX",//buraya mesajlaşılacak numara gelecek
+
+call_to_action: "Merhaba, nasıl yardımcı olabilirim?",
+
+position: "right",
+
+};
+
+var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+
+s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+
+var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+
+})();
+
+</script>
+
+https://wmaraci.com/forum/yazilim/siteye-whatsapp-sohbet-javascript-kullanabilirsiniz-604445.html
+
+<script>
+
+(function () {
+
+var options = {
+
+whatsapp: "+90505XXXXXXX",//buraya mesajlaşılacak numara gelecek
+
+call_to_action: "Merhaba, nasıl yardımcı olabilirim?",
+
+position: "right",
+
+};
+
+var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+
+var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+
+s.function () { WhWidgetSendButton.init(host, proto, options); };
+
+var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+
+})();
+
+</script>

@@ -1,0 +1,114 @@
+Course cont index:
+            var kurs = new CourseClass();
+            kurs.Id = 1;
+            kurs.Title = "Kurs başladı";
+            kurs.Image = "3.jpg";
+            return View(kurs);
+
+carpartial kodalrı:
+@model CourseClass
+<div class="card mb-3" id="kurs_@Model.Id">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="~/img/@Model.Image" alt="" class="img-fluid rounded-start" width="200" height="150">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5>@Model.Title</h5>
+                <p>@Model.Description</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--1(Partail)
+    Bir çok yerde bu kart yapısını kullanıyoruz o yüzden partail yapmak mantıklı önce içine bir model aldırmamız lazımki öna göre doldursun model aldırak partail oluşturulur-->
+
+courselist view kodalrı
+@model List<CourseClass>
+    @foreach(var x in Model){
+    <!--2(Partail)
+            Kard yapısı kullanıcak yere yapıştırılır burda liste var her liste elemanı için bir card yapısı oluşturuluyor
+            partailın modeli foreachdeki o anki eleman olması lazım o yüzden @await Html.PartialAsync("_CardPartial",x) ile x i model alacağınnı söylüyoruz
+        -->
+    @await Html.PartialAsync("_CardPartial",x)
+    }
+    <!--
+    @section Scripts{
+    <link rel="stylesheet" href="deneme.js">
+    }-->
+
+course index kodları:
+@model CourseClass
+<!--
+@section Styles{
+<link rel="stylesheet" href="style.css">
+}-->
+<!--2(Partail)
+    Burda tekbir nesene için kard yapısı oluşturuluracak yani sayfa liste şeklinde değilde 1 tane model var o yüzden partiala direkt sayfadki modeli alacağından dolayı her hangi bir belirtme yapmıyoruz çağırırken
+-->
+@await Html.PartialAsync("_CardPartial")
+
+home index kodalrı:
+<h1 class="display-4">Welcome</h1>
+
+@section Headerdeneme{
+<!--Her sayfada kullanılmaycak bazı sayfalrarda kullanıcak kullanılacak olduğu sayfalara bu şkilede çağrılır partailview olark-->
+@await Html.PartialAsync("_Header")
+}<!--Section olarak kullanma-->
+
+partial headr kodalrı
+<div class="mb-3 p-5 bg-light rounded-3">
+    <div class="container py-5">
+        <h1 class="display-5 fw-bold">
+            PAGE
+        </h1>
+        <div class="col-md-8 fs-4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia dolores id deserunt suscipit. Repellendus
+            incidunt obcaecati sequi eligendi odio repudiandae!
+        </div>
+        <button class="btn btn-primary btn-large">Button</button>
+    </div>
+</div>
+<!--Bu partial belli saylarda kullanıcak ama layout gidi olcak farkı her sayfada değil bunu kullanıcal olan sayfalra @await Html.PartialAsync("_Header") denilerek çağrılarak kullanılacak-->
+
+navbar partial kodalrı:
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+    <div class="container">
+        <a href="#" class="navbar-brand">CourseApp</a>
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">Kurslar</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+layout kodları:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        @await Html.PartialAsync("_Navbar")
+        @RenderSection("Headerdeneme",false)
+    </header>
+    <div class="container mt-3">
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+</body>
+
+</html>

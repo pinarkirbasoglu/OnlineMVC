@@ -1,0 +1,26 @@
+Eğer veritabanından tabloyu manuel olarak sildiyseniz ve update-database komutunu çalıştıramıyorsanız, bu durumda migration geçmişi ile gerçek veritabanı arasında uyumsuzluk oluşmuş olabilir. Veritabanı ve migration geçmişi arasındaki uyumsuzluğu gidermek için aşağıdaki adımları deneyebilirsiniz:
+
+Migration Geçmişini Temizleme:
+
+Package Manager Console'ı açın.
+
+Aşağıdaki komutları sırasıyla çalıştırarak bütün migration'ları geri alın:
+
+bash
+Copy code
+Update-Database InitialMigration
+Bu komut ile bütün migration'ları geri alarak başlangıç noktasına döneceksiniz.
+
+Ardından, bütün migration dosyalarını projenizdeki Migrations klasöründen manuel olarak silin. (202308161208197_Msjsil gibi dosyalar)
+
+Yeni Bir İlk Migration Oluşturma:
+
+Yeniden migration oluşturarak, migration geçmişini ve veritabanınızı senkronize edin:
+
+bash
+Copy code
+Add-Migration InitialMigration
+Update-Database
+Bu komutlar ile başlangıç migration'ını oluşturup veritabanınızı güncelleyin.
+
+Bu adımlarla, mevcut veritabanınızı migration geçmişi ile uyumlu hale getirebilirsiniz. Ancak, bu işlem veritabanınızda var olan verileri etkileyebilir. Eğer verilerinizi korumak istiyorsanız, bu adımları atmadan önce veritabanınızı yedeklemeyi unutmayın. Ayrıca, gerçekten gerekli olduğunda veritabanını manuel olarak silmek yerine, Entity Framework migration'larını kullanarak yapmanız önerilir.

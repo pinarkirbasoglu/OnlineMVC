@@ -1,0 +1,6 @@
+GUİD OLUŞTURMA MSSQL VE C# İLE
+
+	>>MSSQL ÜZERİNDEN GUİD OLUŞTURMA: https://mustafabukulmez.com/2019/01/04/sql-sirali-guid-vermek-sql-newsequentialid/
+
+	
+	>>C# İLE: https://mustafabukulmez.com/2019/01/04/c-guid-ve-sirali-guid-olusturma/
